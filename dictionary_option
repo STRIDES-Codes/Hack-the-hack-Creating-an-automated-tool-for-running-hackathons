@@ -1,0 +1,23 @@
+{
+    "host_username": string,
+    "host_auth_key": string,
+    "teams": [
+        {
+            "team_name": string,
+            "team_members": [
+                string,
+                string,
+                ...
+            ]
+        },
+        {
+            "team_name": string,
+            "team_members": [
+                string,
+                string,
+                ...
+            ]
+        },
+        ...
+    ]
+}
