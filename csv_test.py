@@ -17,24 +17,7 @@ with open(filename, 'r') as csv_file:
   
 print('Field names are:' + ', '.join(field for field in fields))
 
-# project_col = 2
-# name_col = 0
-# teams = []
-
 print('\n')
 for row in rows:
-    #for col in row:   
-        #print(col)
-    #print("\n")
     
     print(', '.join(col for col in row))
-    # print(row[project_col])
-    
-    # for x in range(len(teams)):
-    #     if row[project_col] in teams[x]:
-    #         teams.index(row[project_col]).append(row[name_col])
-    #     else:
-    #         teams.append([row[project_col]])
-        
-    # # for x in range(len(teams))
-    # print(*teams)
