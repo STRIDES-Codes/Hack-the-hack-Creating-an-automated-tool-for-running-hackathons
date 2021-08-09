@@ -1,4 +1,4 @@
-import csv
+import csv, random
 
 filename = "test.csv"
 
@@ -13,13 +13,13 @@ with open(filename, 'r') as csv_file:
     for row in csv_reader:
         rows.append(row)
   
-    print("Total no. of rows: %d"%(csv_reader.line_num))
+    print("Total no. of rows: %d"%(csv_reader.line_num)) # debug
   
-print('Field names are:' + ', '.join(field for field in fields))
+print('Field names are:' + ', '.join(field for field in fields)) # debug
 
 print('\n')
 for row in rows:
-    print(', '.join(col for col in row))
+    print(', '.join(col for col in row)) # debug
 
 # function to create randomized teams and write the information for each team to a separate csv file
 def random_teams(num_teams):
