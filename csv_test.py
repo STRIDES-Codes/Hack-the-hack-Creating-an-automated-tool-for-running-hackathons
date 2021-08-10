@@ -24,7 +24,7 @@ def parse_csv(filename):
             
             make_teams(fields, rows)
         else:
-            print("Error: missing required fields. Header of csv file must contain: 'name', 'email', and 'github'.")
+            print("Error: missing required fields. Headers of csv file must include: 'name', 'email', and 'github'. Optional headers include: 'project'.")
 
 # function to create randomized teams and save into JSON objects
 def random_teams(fields, rows, num_teams):
