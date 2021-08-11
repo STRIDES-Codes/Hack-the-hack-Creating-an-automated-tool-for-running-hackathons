@@ -1,4 +1,4 @@
-import csv, random
+import csv, random, github
 
 def parse_csv(filename):
     fields = []
@@ -22,13 +22,14 @@ def parse_csv(filename):
             # for row in rows:
             #     print(', '.join(col for col in row))
             
-            make_teams(fields, rows)
+            teams = make_teams(fields, rows)
+            create_github_repos(teams)
         else:
             print("Error: missing required fields. Headers of csv file must include: 'name', 'email', and 'github'. Optional headers include: 'project'.")
 
 # function to create randomized teams and save into JSON objects
 def random_teams(fields, rows, num_teams):
-    # print("rand teams")
+    # print("rand teams") # debug
     num_people = len(rows)
     temp_list = rows.copy() # list of people left
     i = 1 # team counter
@@ -36,7 +37,7 @@ def random_teams(fields, rows, num_teams):
     # JSON object that stores everything
     final_object = {
         "host": {
-
+            # need to fill/get somehow
         },
         "teams": [
 
@@ -71,14 +72,15 @@ def random_teams(fields, rows, num_teams):
         # add team to list of teams
         final_object["teams"].append(team_object)
         i += 1
-    print(final_object) # debug
+    # print(final_object) # debug
+    return final_object
     
-# function to group teams based on project
+# function to group teams based on project/other specification
 def make_teams(fields, rows):
     # JSON object that stores everything
     final_object = {
         "host": {
-
+            # need to fill/get somehow
         },
         "teams": [
 
@@ -135,18 +137,37 @@ def make_teams(fields, rows):
                 }
                 team_object["members"].append(member_object)
                 final_object["teams"].append(team_object)
-        print(final_object) # debug
+        # print(final_object) # debug
     # no projects pre-assigned, teams will be randomized
     else:
         # prompt for num of teams?
         num_teams = 3 # temp placeholder
-        random_teams(fields, rows, num_teams)
+        final_object = random_teams(fields, rows, num_teams)
+    return final_object
         
 # field value validator - make sure necessary headers are in csv file
 def val_check(vals):
     if "name" in vals and "email" in vals and "github" in vals:
         return True
     return False
+
+# create github repositories for each team and invites collaborators
+def create_github_repos(info_dict):
+    host_instance = github.Github(info_dict["host_auth_key"])
+    host_user = host_instance.get_user()
+    for team in info_dict["teams"]:
+        try:
+            repo = host_user.create_repo(team["team_name"])
+            print(f"Created repo {repo.full_name}")
+            for member in team["team_members"]:
+                try:
+                    repo.add_to_collaborators(member)
+                    print(f"Added user {member} to {repo.full_name}")
+                except:
+                    print(f"User {member} does not correspond to a GitHub account")
+            print(f"Link to repo: {repo.html_url}")
+        except:
+            print(f"Unable to create Github repository {team['team_name']}")
 
 parse_csv("test.csv") # test the parser
 
