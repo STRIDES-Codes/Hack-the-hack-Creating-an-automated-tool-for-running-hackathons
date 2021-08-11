@@ -1,4 +1,4 @@
-import csv, random, github, sys
+import csv, random, sys, github
 
 def parse_csv(filename):
     fields = []
@@ -151,7 +151,8 @@ def make_teams(fields, rows):
                 min = sys.maxsize
                 min_index = 0
             
-            final_object["teams"].pop(0) # remove team of unassigned people
+            final_object["teams"].pop(0) # remove list of unassigned people
+            # print(final_object) # debug
         # no one was actually assigned a project
         else:
             # inform that project column was empty and project header should be removed
@@ -192,7 +193,7 @@ def create_github_repos(info_dict):
 # parse_csv("test.csv") # test the parser
 
 def delete_teamnum_repos(repos_to_delete = ["team_1", "team_2", "team_3", "team_4", "team_5"]):
-    host_instance = github.Github("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")
+    host_instance = github.Github("")
     host_user = host_instance.get_user()
     for repo in host_user.get_repos():
         #print(repo.name)
@@ -201,7 +202,6 @@ def delete_teamnum_repos(repos_to_delete = ["team_1", "team_2", "team_3", "team_
             repo.delete()
 
 # delete_teamnum_repos()
-
 
 # sample final JSON object
 
