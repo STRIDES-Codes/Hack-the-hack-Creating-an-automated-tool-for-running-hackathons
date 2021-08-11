@@ -1,6 +1,8 @@
 # Hack-the-hack-Creating-an-automated-tool-for-running-hackathons
 
-The aim of this project is to automate the work needed for organizing and setting up a hackathon. The event organizer will need to provide a CSV file with the following information:
+The aim of this project is to automate the work needed for organizing and setting up a hackathon. A previous version of this was written in HTML and JavaScript, but we decided to redo the program from scratch in Python.
+
+The event organizer will need to provide a CSV file with the following information:
 - Name, email, and github username of participants
 - Header of CSV file must include "name", "email", and "github" (any order, case does not matter)
 - *Optional*: project each particpant is working on (header must also include "project" somewhere)
