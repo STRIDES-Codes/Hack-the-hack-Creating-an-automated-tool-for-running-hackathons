@@ -7,7 +7,7 @@ The aim of this project is to automate the work needed for organizing and settin
   - If multiple people are working on one project, the project name *must* be spelled the same for all individuals or they will be added to different repositories
   - If some individuals are not assigned a project, they will be placed into existing teams with the fewest members
 
-Refer to the [example file](https://github.com/STRIDES-Codes/Hack-the-hack-Creating-an-automated-tool-for-running-hackathons/blob/main/example.csv) or the [raw example file](https://raw.githubusercontent.com/STRIDES-Codes/Hack-the-hack-Creating-an-automated-tool-for-running-hackathons/main/example.csv).
+Refer to the [example file](https://github.com/STRIDES-Codes/Hack-the-hack-Creating-an-automated-tool-for-running-hackathons/blob/main/example.csv) or the [raw example file](https://raw.githubusercontent.com/STRIDES-Codes/Hack-the-hack-Creating-an-automated-tool-for-running-hackathons/main/example.csv) if you need a guide.
 
 ## Members  
 - Jackie Cattell
