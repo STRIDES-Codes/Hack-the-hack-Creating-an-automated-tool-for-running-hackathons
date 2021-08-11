@@ -153,7 +153,7 @@ def make_teams(fields, rows):
             
             final_object["teams"].pop(0) # remove list of unassigned people
             # print(final_object) # debug
-        # no one was actually assigned a project
+        # no one was actually assigned a project, teams will be randomized
         else:
             # inform that project column was empty and project header should be removed
             # prompt for num of teams?
@@ -204,7 +204,6 @@ def delete_teamnum_repos(repos_to_delete = ["team_1", "team_2", "team_3", "team_
 # delete_teamnum_repos()
 
 # sample final JSON object
-
 """
 {
     host: {
