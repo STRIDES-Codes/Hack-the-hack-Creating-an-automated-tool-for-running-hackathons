@@ -37,7 +37,8 @@ def random_teams(fields, rows, num_teams):
     # JSON object that stores everything
     final_object = {
         "host": {
-            # need to fill/get somehow
+            "github_username": "Abdeet",
+            "github_auth_key": "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"
         },
         "teams": [
 
@@ -80,7 +81,8 @@ def make_teams(fields, rows):
     # JSON object that stores everything
     final_object = {
         "host": {
-            # need to fill/get somehow
+            "github_username": "Abdeet",
+            "github_auth_key": "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"
         },
         "teams": [
 
@@ -153,15 +155,15 @@ def val_check(vals):
 
 # create github repositories for each team and invites collaborators
 def create_github_repos(info_dict):
-    host_instance = github.Github(info_dict["host_auth_key"])
+    host_instance = github.Github(info_dict["host"]["github_auth_key"])
     host_user = host_instance.get_user()
     for team in info_dict["teams"]:
         try:
             repo = host_user.create_repo(team["team_name"])
             print(f"Created repo {repo.full_name}")
-            for member in team["team_members"]:
+            for member in team["members"]:
                 try:
-                    repo.add_to_collaborators(member)
+                    repo.add_to_collaborators(member['github_username'])
                     print(f"Added user {member} to {repo.full_name}")
                 except:
                     print(f"User {member} does not correspond to a GitHub account")
@@ -169,7 +171,19 @@ def create_github_repos(info_dict):
         except:
             print(f"Unable to create Github repository {team['team_name']}")
 
-parse_csv("test.csv") # test the parser
+#parse_csv("test.csv") # test the parser
+
+def delete_teamnum_repos(repos_to_delete = ["team_1", "team_2", "team_3", "team_4", "team_5"]):
+    host_instance = github.Github("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")
+    host_user = host_instance.get_user()
+    for repo in host_user.get_repos():
+        #print(repo.name)
+        if repo.name in repos_to_delete:
+            print(repo.name)
+            repo.delete()
+
+#delete_teamnum_repos()
+
 
 # sample final JSON object
 
