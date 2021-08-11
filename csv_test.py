@@ -1,4 +1,4 @@
-import csv, random, github
+import csv, random, github, sys
 
 def parse_csv(filename):
     fields = []
@@ -22,6 +22,7 @@ def parse_csv(filename):
             # for row in rows:
             #     print(', '.join(col for col in row))
             
+            # make the teams and repositories
             teams = make_teams(fields, rows)
             create_github_repos(teams)
         else:
@@ -37,8 +38,8 @@ def random_teams(fields, rows, num_teams):
     # JSON object that stores everything
     final_object = {
         "host": {
-            "github_username": "Abdeet",
-            "github_auth_key": "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"
+            "github_username": "",
+            "github_auth_key": ""
         },
         "teams": [
 
@@ -81,8 +82,8 @@ def make_teams(fields, rows):
     # JSON object that stores everything
     final_object = {
         "host": {
-            "github_username": "Abdeet",
-            "github_auth_key": "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"
+            "github_username": "",
+            "github_auth_key": ""
         },
         "teams": [
 
@@ -93,34 +94,30 @@ def make_teams(fields, rows):
     if "project" in fields:
         project_index = fields.index("project") # get column used for project in csv
         
-        # create first team object and first member object - loop below needs at least one team to search
+        # create team object for those not assigned a project - loop below needs at least one team to search
         team_object = {
-            "team_name": rows[0][project_index],
+            "team_name": "",
             "members": [
 
             ]
         }
-        member_object = {
-            "name": rows[0][fields.index("name")],
-            "email": rows[0][fields.index("email")],
-            "github_username": rows[0][fields.index("github")]
-        }
-        # add member to team and team to list of teams
-        team_object["members"].append(member_object)
         final_object["teams"].append(team_object)
         
         # loop through rest of people
-        for row in rows[1:]:
+        for row in rows:
             found = False
+            # make team member object
+            member_object = {
+                "name": row[fields.index("name")],
+                "email": row[fields.index("email")],
+                "github_username": row[fields.index("github")]
+            }
+            # if (row[project_index] == ""):
+                #print("empty")
             # check each team in list of teams
             for team in final_object["teams"]:
-                # if team already exists, create team member object and add to team
+                # if team already exists, add to team
                 if row[project_index] == team["team_name"]:
-                    member_object = {
-                        "name": row[fields.index("name")],
-                        "email": row[fields.index("email")],
-                        "github_username": row[fields.index("github")]
-                    }
                     team["members"].append(member_object)
                     found = True
                     break
@@ -132,14 +129,35 @@ def make_teams(fields, rows):
         
                     ]
                 }
-                member_object = {
-                    "name": row[fields.index("name")],
-                    "email": row[fields.index("email")],
-                    "github_username": row[fields.index("github")]
-                }
                 team_object["members"].append(member_object)
                 final_object["teams"].append(team_object)
         # print(final_object) # debug
+        
+        # make sure there are other teams besides unassigned people
+        if len(final_object["teams"]) > 1:        
+            # values for tracking smallest team size and index of that team
+            min = sys.maxsize
+            min_index = 0
+                    
+            # loop through unassigned people to add them to smallest teams
+            for member in final_object["teams"][0]["members"]:
+                # loop through all teams and track smallest team
+                for i in range(1, len(final_object["teams"])):
+                    if len(final_object["teams"][i]["members"]) < min:
+                        min = len(final_object["teams"][i]["members"])
+                        min_index = i
+                # add member to smallest team and reset tracking variables
+                final_object["teams"][min_index]["members"].append(member)
+                min = sys.maxsize
+                min_index = 0
+            
+            final_object["teams"].pop(0) # remove team of unassigned people
+        # no one was actually assigned a project
+        else:
+            # inform that project column was empty and project header should be removed
+            # prompt for num of teams?
+            num_teams = 3 # temp placeholder
+            final_object = random_teams(fields, rows, num_teams)
     # no projects pre-assigned, teams will be randomized
     else:
         # prompt for num of teams?
@@ -171,7 +189,7 @@ def create_github_repos(info_dict):
         except:
             print(f"Unable to create Github repository {team['team_name']}")
 
-#parse_csv("test.csv") # test the parser
+# parse_csv("test.csv") # test the parser
 
 def delete_teamnum_repos(repos_to_delete = ["team_1", "team_2", "team_3", "team_4", "team_5"]):
     host_instance = github.Github("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")
@@ -182,7 +200,7 @@ def delete_teamnum_repos(repos_to_delete = ["team_1", "team_2", "team_3", "team_
             print(repo.name)
             repo.delete()
 
-#delete_teamnum_repos()
+# delete_teamnum_repos()
 
 
 # sample final JSON object
