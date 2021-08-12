@@ -61,25 +61,34 @@ def createDoc():
 
     doca.add_heading('Author contributions', 1)
     doca.add_paragraph('F1000R uses the CRediT Taxonomy for author contributions.  For each author, list their contribution(s) from the list below.  Anyone who contributed in another capacity or otherwise does not meet the criteria for authorship (e.g. they did not review the final manuscript) should be included in the acknowledgements.')
-
-    items = (
-    (7, '1024', 'Plush kittens'),
-    (3, '2042', 'Furbees'),
-    (1, '1288', 'French Poodle Collars, Deluxe'),
-    )
-    # add table ------------------
-    table = doca.add_table(1, 3)
-    # populate header row --------
-    heading_cells = table.rows[0].cells
-    heading_cells[0].text = 'Qty'
-    heading_cells[1].text = 'SKU'
-    heading_cells[2].text = 'Description'
-    # add a data row for each item
-    for item in items:
-        cells = table.add_row().cells
-        cells[0].text = str(item[0])
-        cells[1].text = item[1]
-        cells[2].text = item[2]
+​
+    items = [
+        ['Conceptualization', 'Ideas; formulation or evolution of overarching research goals and aims.'], 
+        ['Data Curation', 'Management activities to annotate (produce metadata), scrub data and maintain research data (including software code, where it is necessary for interpreting the data itself) for initial use and later reuse.'],
+        ['Formal Analysis', 'Application of statistical, mathematical, computational, or other formal techniques to analyze or synthesize study data.'], 
+        ['Funding Aquisition', 'Acquisition of the financial support for the project leading to this publication.'],
+        ['Investigation', 'Conducting a research and investigation process, specifically performing the experiments, or data/evidence collection.'],
+        ['Methodology', 'Development or design of methodology; creation of models.'],
+        ['Project Administration', 'Management and coordination responsibility for the research activity planning and execution.'],
+        ['Resources', 'Provision of study materials, reagents, materials, patients, laboratory samples, animals, instrumentation, computing resources, or other analysis tools.'],
+        ['Software', 'Programming, software development; designing computer programs; implementation of the computer code and supporting algorithms; testing of existing code components.'],
+        ['Supervision', 'Oversight and leadership responsibility for the research activity planning and execution, including mentorship external to the core team.'],
+        ['Validation', 'Verification, whether as a part of the activity or separate, of the overall replication/reproducibility of results/experiments and other research outputs.'],
+        ['Visualization', 'Preparation, creation and/or presentation of the published work, specifically visualization/data presentation.'],
+        ['Writing - Original Draft Preparation', 'Creation and/or presentation of the published work, specifically writing the initial draft (including substantive translation).'],
+        ['Writing - Review and Editing', 'Preparation, creation and/or presentation of the published work by those from the original research group, specifically critical review, commentary or revision – including pre- or post-publication stages.']
+            ]
+    contribtable = doca.add_table(rows = 1, cols = 2)
+    contribtable.style = 'Table Grid'
+    hdr_cells = contribtable.rows[0].cells
+    hdr_cells[0].text = 'Contributor Role'
+    hdr_cells[1].text = 'Role Definition'
+    
+    for contributor, role in items:
+        row_Cells = contribtable.add_row().cells
+        row_Cells[0].text = str(contributor)
+        row_Cells[1].text = str(role)
+​
 
 
     doca.add_heading('Competing interests', 1)
