@@ -118,15 +118,12 @@ def uploadDoc(projectName):
     )
     print(r.text)
 
-def uploadDocs(filename):
-    allProjects = pandas.read_csv(filename, usecols=['project']).values.tolist()
-    processed = []
+def uploadDocs(project_dictionary):
+    allProjects = project_dictionary['teams']
     for project in allProjects:
-        if (project not in processed):
-            uploadDoc(project[0])
-            processed.append(project)
-
-
+            uploadDoc(project['team_name'])
+            
 createDoc()
-uploadDocs("example.csv")
+
+uploadDocs(test_object)
     
