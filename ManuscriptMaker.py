@@ -3,6 +3,7 @@ from docx.shared import Inches
 import json
 import requests
 import pandas
+import os
 
 def createDoc():
     doca = Document()
@@ -95,7 +96,7 @@ def createDoc():
     refs.add_run('Instructions on using the F1000R Word plug in for reference management: http://f1000.com/work/faq/word-plugin')
     doca.add_heading('Figures and Tables', 1)
     doca.add_paragraph('All figures and tables should be cited and discussed in the article text. Figure legends and tables should be added at the end of the manuscript. Tables should be formatted using the ‘insert table’ function in Word, or provided as an Excel file. Files for figures should be uploaded as separate files through the submission system. Each figure or table should have a concise title of no more than 15 words. A legend for each figure and table should also be provided that briefly describes the key points and explains any symbols and abbreviations used. The legend should be sufficiently detailed so that the figure or table can stand alone from the main text. ')
-    doca.save('demo.docx')
+    doca.save('template.docx')
 def uploadDoc(projectName):
     NT = ''
     userData = []
@@ -122,6 +123,10 @@ def uploadDocs(project_dictionary):
     allProjects = project_dictionary['teams']
     for project in allProjects:
             uploadDoc(project['team_name'])
+            
+def closeDoc():
+    os.remove("template.docx")
+    print("File Removed!")
             
 createDoc()
 
