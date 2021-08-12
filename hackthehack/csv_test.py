@@ -5,9 +5,7 @@ def parse_csv(csv_reader):
     fields = []
     rows = []
     auth_keys = next(csv_reader)
-    print(auth_keys, file=sys.stderr) 
     fields = next(csv_reader)
-    print(fields, file=sys.stderr)
     fields = [field.lower() for field in fields] # lowercase all fields
     
     # verify that necessary fields are present
@@ -22,16 +20,17 @@ def parse_csv(csv_reader):
         # for row in rows:
         #     print(', '.join(col for col in row))
         
-        # make the teams and repositories
-        
+        # make the teams, repositories, and Google Doc manuscripts
         teams = make_teams(auth_keys, fields, rows)
-        #delete_teamnum_repos(auth_keys[0])
+        #delete_teamnum_repos(auth_keys[0]) # for ease of testing
+        output_csv(teams)
         final_object = create_github_repos(teams)
         createDoc()
         uploadDocs(final_object)
         closeDoc()
     else:
         print("Error: missing required fields. Headers of csv file must include: 'name', 'email', and 'github'. Optional headers include: 'project'.", file=sys.stderr)
+
 # function to create randomized teams and save into JSON objects
 def random_teams(auth_keys, fields, rows, num_teams):
     # print("rand teams") # debug
@@ -196,6 +195,7 @@ def create_github_repos(info_dict):
             print(f"Unable to create Github repository {team['team_name']}", file=sys.stderr)
     return info_dict
     
+# remove repos - used for ease of testing
 def delete_teamnum_repos(auth_key, repos_to_delete = ["team_1", "team_2", "team_3", "team_4", "team_5"]):
     host_instance = github.Github(auth_key)
     host_user = host_instance.get_user()
@@ -205,3 +205,12 @@ def delete_teamnum_repos(auth_key, repos_to_delete = ["team_1", "team_2", "team_
             print(repo.name)
             repo.delete()
 
+# write a csv file with info on all teams to local machine - NEED TO TEST
+def output_csv(teams_dict):
+    with open("teams.csv", "w") as file:
+        writer = csv.writer(file, lineterminator = '\n')
+        writer.writerow(["Name", "Team", "GitHub Username", "Email"])
+        for team in teams_dict["teams"]:
+            for member in team["members"]:
+                writer.writerow([member["name"], team["team_name"], member["github_username"], member["email"]])
+            writer.writerow("")
