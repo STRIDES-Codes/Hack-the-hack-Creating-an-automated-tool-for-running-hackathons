@@ -17,7 +17,7 @@ An automated system for this process would improve efficiency, speed, and ease o
 ![alt text](https://docs.google.com/drawings/d/e/2PACX-1vTUZnEbbunInRaQ6JCAM62nry_Y4job_lOI_c5roBZ2BxGQUKSfUdgWM2LaX0PN1PS3nUgmlceM1rt_/pub?w=960&h=720)
 
 ## Instructions for use
-The web application (see here*) feeds in a CSV file and generates teams, Github repos, and Google Docs. To use, open web application and use prompt to select a pre-made CSV file.
+The web application (see here*, created with Flax) feeds in a CSV file and generates teams, Github repos, and Google Docs. To use, open web application and use prompt to select a pre-made CSV file.
 
 The event organizer will need to provide a CSV file with the following information:
 - Name, email, and github username of participants
@@ -41,7 +41,10 @@ Refer to the [example file](https://github.com/STRIDES-Codes/Hack-the-hack-Creat
 
 ## APIs used
  -Google Drive
+
  -Github
+
+ -Flax
 
 ## Additional Functionality 
 Originally, including the generation of Slack channels (#general, #help-desk, and #[team]) were going to be included in this project, but due to time constraints and problems with using the Slack API, it was excluded from this project for the time being. Future projects may consider incorporating the generation of Slack channels and listing them in the Google Docs associated with this project.
