@@ -28,7 +28,9 @@ The event organizer will need to provide a CSV file with the following informati
   - If multiple people are working on one project, the project name *must* be spelled the same for all individuals or they will be added to different repositories
   - If some individuals are not assigned a project, they will be placed into existing teams with the fewest members
 
-In addition, the event organizer will need to provide their access token or refresh token for the Google Drive API. To achieve this. The user should go to OAuth 2.0 Playground (google.com), select Drive API, authorize the API, thereby providing access to the organizer’s Google Drive Account, and then exchange the authorization code provided for tokens. After scrolling down on the right side of the window, the user should see a part of the response formatted as follows:
+The event organizer has to generate a Github Personal Access Token (PAT) in order to create repositories. To do so, they should sign into their Github account and go to **Settings>Developer Settings>Personal Access Token>Generate New Token**. Once here, they should give the token a note describing its use case (codeathon for example), set the expiration to suit their needs and select the **repo** scope. Copy the token and save it somewhere because it can only be viewed once.
+
+In addition, the event organizer will need to provide their access token or refresh token for the Google Drive API. To achieve this, the user should go to OAuth 2.0 Playground (google.com), select Drive API, authorize the API, thereby providing access to the organizer’s Google Drive Account, and then exchange the authorization code provided for tokens. After scrolling down on the right side of the window, the user should see a part of the response formatted as follows:
 {
   "access_token": "ya29.a0***",
   "scope": "https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/documents",
