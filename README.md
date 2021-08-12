@@ -42,37 +42,63 @@ Refer to the [example file](https://github.com/STRIDES-Codes/Hack-the-hack-Creat
 
 ## Code
 [ManuscriptMaker.py](https://github.com/STRIDES-Codes/Hack-the-hack-Creating-an-automated-tool-for-running-hackathons/blob/main/ManuscriptMaker.py) combines the code for the different portions, making it the complete tool. 
+
 [csv_test.py](https://github.com/STRIDES-Codes/Hack-the-hack-Creating-an-automated-tool-for-running-hackathons/blob/main/csv_test.py) is the code for the CSV parser to create teams
+
 [github_api.py](https://github.com/STRIDES-Codes/Hack-the-hack-Creating-an-automated-tool-for-running-hackathons/blob/main/github_api.py) is the code for the Github repository generator.
 
 ## APIs used
  -Google Drive
+ 
  -Github
+ 
  -Flax
 
 ## Packages (Python)
 certifi==2021.5.30
+
 cffi==1.14.6
+
 charset-normalizer==2.0.4
+
 click==8.0.1
+
 Deprecated==1.2.12
+
 Flask==2.0.1
+
 idna==3.2
+
 importlib-metadata==4.6.3
+
 itsdangerous==2.0.1
+
 Jinja2==3.0.1
+
 MarkupSafe==2.0.1
+
 pkg-resources==0.0.0
+
 pycparser==2.20
+
 PyGithub==1.55
+
 PyJWT==2.1.0
+
 PyNaCl==1.4.0
+
 requests==2.26.0
+
 six==1.16.0
+
 typing-extensions==3.10.0.0
+
 urllib3==1.26.6
+
 Werkzeug==2.0.1
+
 wrapt==1.12.1
+
 zipp==3.5.0
 
 ## Additional Functionality 
