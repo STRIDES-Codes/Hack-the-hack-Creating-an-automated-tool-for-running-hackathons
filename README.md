@@ -85,4 +85,4 @@ Originally, including the generation of Slack channels (#general, #help-desk, an
 - Abhiraman Senthilkumar
 - Amanda Taylor
 - Brittany DuBose
-![image](https://user-images.githubusercontent.com/75758331/129243554-b7dc42fa-c66a-4679-9ae1-ec4819d1e2f6.png)
+<!--[image](https://user-images.githubusercontent.com/75758331/129243554-b7dc42fa-c66a-4679-9ae1-ec4819d1e2f6.png)-->
