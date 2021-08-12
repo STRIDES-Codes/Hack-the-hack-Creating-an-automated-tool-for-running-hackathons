@@ -20,9 +20,6 @@ An automated system for this process would improve efficiency, speed, and ease o
 ## Instructions for use
 The web application (see here*, created with Flask) feeds in a CSV file and generates teams, Github repos, and Google Docs. To use, open web application and use prompt to select a pre-made CSV file.
 
-### Running on a local machine
-Since the web app portion of the project was not finished in time, an alternative is to run the app locally on your own machine. To do this, you will need Python installed on the machine. First, clone this repository (or download it as a zip). Next open a terminal and change your working directory to the repository folder (`cd /path/to/repo`). You will need to install the required packages using `pip install -r requirements.txt` (consider creating a virtual environment for this using `venv` to prevent dependency conflicts between projects). Once finished, cd in to the "hackthehack" folder (`cd hackthehack`). To run the web app on your machine only, run `flask run`. To access the web app, open a browser and go to [http://127.0.0.1:5000](http://127.0.0.1:5000). Use the prompt to select a pre-made CSV file and then upload it. This will create your GitHub repositories and Google Doc manuscripts. If you want to make the web app available to your local network, run `flask run --host=0.0.0.0`. The output should give you an IP address (something like x.x.x.x:5000), and anyone who goes to that IP address in the web browser can access the web app.
-
 The event organizer will need to provide a CSV file with the following information:
 - Name, email, and Github username of participants
 - First line of CSV file must include the GitHub authentication key followed by the Google Drive access token
@@ -45,6 +42,9 @@ In addition, the event organizer will need to provide their access token or refr
 In order to use the web application, the user should copy the access token on the first line into the web application. Please note that access tokens expire 24 hours after generation, so it may be necessary to regenerate access tokens and restore permissions to the Google Drive API.
 
 Refer to the [example file](https://github.com/STRIDES-Codes/Hack-the-hack-Creating-an-automated-tool-for-running-hackathons/blob/main/test.csv) if you need a guide.
+
+### Running on a local machine
+Since the web app portion of the project was not finished in time, an alternative is to run the app locally on your own machine. To do this, you will need Python installed on the machine. First, clone this repository (or download it as a zip). Next open a terminal and change your working directory to the repository folder (`cd /path/to/repo`). You will need to install the required packages using `pip install -r requirements.txt` (consider creating a virtual environment for this using `venv` to prevent dependency conflicts between projects). Once finished, cd in to the "hackthehack" folder (`cd hackthehack`). To run the web app on your machine only, run `flask run`. To access the web app, open a browser and go to [http://127.0.0.1:5000](http://127.0.0.1:5000). Use the prompt to select a pre-made CSV file and then upload it. This will create your GitHub repositories and Google Doc manuscripts. If you want to make the web app available to your local network, run `flask run --host=0.0.0.0`. The output should give you an IP address (something like x.x.x.x:5000), and anyone who goes to that IP address in the web browser can access the web app.
 
 ## Code
 [hackthehack/app.py](https://github.com/STRIDES-Codes/Hack-the-hack-Creating-an-automated-tool-for-running-hackathons/blob/main/hackthehack/app.py) combines the code for the different portions, making it the complete tool. 
