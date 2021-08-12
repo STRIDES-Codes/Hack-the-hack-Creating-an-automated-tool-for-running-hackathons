@@ -63,6 +63,8 @@ charset-normalizer==2.0.4
 
 click==8.0.1
 
+colorama==0.4.4
+
 Deprecated==1.2.12
 
 Flask==2.0.1
@@ -75,9 +77,13 @@ itsdangerous==2.0.1
 
 Jinja2==3.0.1
 
+lxml==4.6.3
+
 MarkupSafe==2.0.1
 
-pkg-resources==0.0.0
+numpy==1.21.1
+
+pandas==1.3.1
 
 pycparser==2.20
 
@@ -86,6 +92,12 @@ PyGithub==1.55
 PyJWT==2.1.0
 
 PyNaCl==1.4.0
+
+python-dateutil==2.8.2
+
+python-docx==0.8.11
+
+pytz==2021.1
 
 requests==2.26.0
 
