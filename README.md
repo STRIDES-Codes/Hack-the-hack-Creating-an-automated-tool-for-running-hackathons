@@ -22,7 +22,8 @@ The web application (see here*, created with Flask) feeds in a CSV file and gene
 
 The event organizer will need to provide a CSV file with the following information:
 - Name, email, and Github username of participants
-- Header of CSV file must include "name", "email", and "github" (any order, case does not matter)
+- First line of CSV file must include the GitHub authentication key followed by the Google Drive access token
+- Second line of CSV file must include "name", "email", and "github" (any order, case does not matter)
 - *Optional*: project each participant is working on (header must also include "project" somewhere)
   - If multiple people are working on one project, the project name *must* be spelled the same for all individuals or they will be added to different repositories
   - If some individuals are not assigned a project, they will be placed into existing teams with the fewest members
