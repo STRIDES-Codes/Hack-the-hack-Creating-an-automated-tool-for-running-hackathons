@@ -41,7 +41,7 @@ In addition, the event organizer will need to provide their access token or refr
 
 In order to use the web application, the user should copy the access token on the first line into the web application. Please note that access tokens expire 24 hours after generation, so it may be necessary to regenerate access tokens and restore permissions to the Google Drive API.
 
-Refer to the [example file](https://github.com/STRIDES-Codes/Hack-the-hack-Creating-an-automated-tool-for-running-hackathons/blob/main/example.csv) or the [raw file of the example](https://raw.githubusercontent.com/STRIDES-Codes/Hack-the-hack-Creating-an-automated-tool-for-running-hackathons/main/example.csv) if you need a guide.
+Refer to the [example file](https://github.com/STRIDES-Codes/Hack-the-hack-Creating-an-automated-tool-for-running-hackathons/blob/main/test.csv) or the [raw file of the example](https://raw.githubusercontent.com/STRIDES-Codes/Hack-the-hack-Creating-an-automated-tool-for-running-hackathons/main/test.csv) if you need a guide.
 
 ## Code
 [ManuscriptMaker.py](https://github.com/STRIDES-Codes/Hack-the-hack-Creating-an-automated-tool-for-running-hackathons/blob/main/ManuscriptMaker.py) combines the code for the different portions, making it the complete tool. 
