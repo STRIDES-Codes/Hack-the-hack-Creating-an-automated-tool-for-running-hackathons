@@ -4,9 +4,9 @@ from flask import request, redirect, url_for
 from werkzeug.utils import secure_filename
 from csv_test import *
 
-UPLOAD_FOLDER = '/home/pi/flaskproject/hackthehack/uploads'
+# UPLOAD_FOLDER = '/home/pi/flaskproject/hackthehack/uploads'
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+# app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
 def allowed_file(filename):
