@@ -44,11 +44,13 @@ In order to use the web application, the user should copy the access token on th
 Refer to the [example file](https://github.com/STRIDES-Codes/Hack-the-hack-Creating-an-automated-tool-for-running-hackathons/blob/main/test.csv) if you need a guide.
 
 ## Code
-[ManuscriptMaker.py](https://github.com/STRIDES-Codes/Hack-the-hack-Creating-an-automated-tool-for-running-hackathons/blob/main/ManuscriptMaker.py) combines the code for the different portions, making it the complete tool. 
+[hackthehack/app.py](https://github.com/STRIDES-Codes/Hack-the-hack-Creating-an-automated-tool-for-running-hackathons/blob/main/hackthehack/app.py) combines the code for the different portions, making it the complete tool. 
 
-[csv_test.py](https://github.com/STRIDES-Codes/Hack-the-hack-Creating-an-automated-tool-for-running-hackathons/blob/main/csv_test.py) is the code for the CSV parser to create teams
+[hackthehack/csv_test.py](https://github.com/STRIDES-Codes/Hack-the-hack-Creating-an-automated-tool-for-running-hackathons/blob/main/hackthehack/csv_test.py) is the code for the CSV parser to create teams.
 
 [github_api.py](https://github.com/STRIDES-Codes/Hack-the-hack-Creating-an-automated-tool-for-running-hackathons/blob/main/github_api.py) is the code for the Github repository generator.
+
+[hackthehack/ManuscriptMaker.py](https://github.com/STRIDES-Codes/Hack-the-hack-Creating-an-automated-tool-for-running-hackathons/blob/main/hackthehack/ManuscriptMaker.py) is the code for creating and uploading a boilerplate Google Doc manuscript for each team.
 
 ## APIs used
  -Google Drive
