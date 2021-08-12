@@ -97,20 +97,15 @@ def createDoc():
     doca.add_heading('Figures and Tables', 1)
     doca.add_paragraph('All figures and tables should be cited and discussed in the article text. Figure legends and tables should be added at the end of the manuscript. Tables should be formatted using the ‘insert table’ function in Word, or provided as an Excel file. Files for figures should be uploaded as separate files through the submission system. Each figure or table should have a concise title of no more than 15 words. A legend for each figure and table should also be provided that briefly describes the key points and explains any symbols and abbreviations used. The legend should be sufficiently detailed so that the figure or table can stand alone from the main text. ')
     doca.save('template.docx')
-def uploadDoc(projectName):
-    NT = ''
-    userData = []
-    with open("AccessToken.txt") as nontemp:
-        NT = nontemp.read()
-    NT = NT.split("\n")
-
-    headers = {"Authorization": "Bearer " + NT[0]}
+def uploadDoc(Auth_Key, projectName):
+    
+    headers = {"Authorization": "Bearer " + str(Auth_key)}
     para = {
         "name": projectName,
     }
     files = {
         'data': ('metadata', json.dumps(para), 'application/json; charset=UTF-8'),
-        'file': open("./" + NT[1], "rb")
+        'file': open("./template.docx", "rb")
     }
     r = requests.post(
         "https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart",
@@ -122,13 +117,12 @@ def uploadDoc(projectName):
 def uploadDocs(project_dictionary):
     allProjects = project_dictionary['teams']
     for project in allProjects:
-            uploadDoc(project['team_name'])
+            uploadDoc(project_dictionary['auth_key'], project['team_name'])
             
 def closeDoc():
     os.remove("template.docx")
     print("File Removed!")
             
-createDoc()
-
-uploadDocs(test_object)
+#createDoc()
+#uploadDocs(test_object)
     
